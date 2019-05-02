@@ -18,7 +18,7 @@ echo "$GENERATE_COUNT images found."
 
 mkdir -p  $TMP_PATH/images
 
-pm2 start ./mse/mse.com --interpreter wine --name $PROCESS_ID -- --export $MSE_PATH $TMP_PATH/images/{card.gamecode}.png
+pm2 start ./MagicSetEditor/mse.com --interpreter wine --name $PROCESS_ID -- --export $MSE_PATH $TMP_PATH/images/{card.gamecode}.png
 
 CURRENT_COUNT=0
 while (($CURRENT_COUNT != $GENERATE_COUNT))
