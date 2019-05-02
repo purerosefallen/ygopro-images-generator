@@ -1,9 +1,11 @@
 .idea
 DataEditorX
 MagicSetEditor
-ygopro-images/*
+ygopro-images
 ygopro-images-raw/*.jpg
 *.mse-set
 *.log
 *.cdb
-records.jsonGemfile.lock
+records.json
+Gemfile.lock
+pics
