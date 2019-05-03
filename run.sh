@@ -6,7 +6,7 @@ cd ygopro-database
 git fetch origin master
 git reset --hard FETCH_HEAD
 
-cd ../ygopro-images
+cd ../pics
 git fetch origin master
 git reset --hard FETCH_HEAD
 cd ..
