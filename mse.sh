@@ -28,7 +28,7 @@ done
 
 pm2 delete $PROCESS_ID
 
-mv $TMP_PATH/images/*.png ./images/
+ls $TMP_PATH/images/*.png | grep -oP '\d+' | xargs -I {} convert $TMP_PATH/images/{}.png  -resize 322x433! $PWD/images/{}.png
 rm -rf $TMP_PATH
 
 echo "Finished generating $1."
