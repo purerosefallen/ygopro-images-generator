@@ -1,6 +1,7 @@
 #!/bin/bash
 
-export PROCESS_COUNT=$(grep -c processor /proc/cpuinfo)
+#export PROCESS_COUNT=$(grep -c processor /proc/cpuinfo)
+export PROCESS_COUNT=$2
 
 #cd ygopro-database
 #git fetch origin master
