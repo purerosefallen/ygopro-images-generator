@@ -1,7 +1,7 @@
 #!/bin/bash
 
 #export PROCESS_COUNT=$(grep -c processor /proc/cpuinfo)
-export PROCESS_COUNT=$1
+#export PROCESS_COUNT=$1
 
 #cd ygopro-database
 #git fetch origin master
@@ -38,7 +38,7 @@ ruby --external-encoding=utf-8 generate.rb en-US
 
 echo "Generating images."
 pm2 list
-ls ./mse-sets/ | xargs -I {} -P $PROCESS_COUNT ./mse.sh {}
+ls ./mse-sets/ | xargs -I {} ./mse.sh {}
 
 echo "Pushing to GitHub."
 cd images
