@@ -18,6 +18,8 @@ echo "$GENERATE_COUNT images found."
 
 mkdir -p  $TMP_PATH/images
 
+echo "Generating images of $MSE_PATH."
+
 pm2 start ./MagicSetEditor/mse.com --interpreter wine --name $PROCESS_ID -- --export $MSE_PATH $TMP_PATH/images/{card.gamecode}.png
 
 CURRENT_COUNT=0
@@ -28,7 +30,9 @@ done
 
 pm2 delete $PROCESS_ID
 
-ls $TMP_PATH/images/*.png | grep -oP '\d+' | xargs -I {} convert $TMP_PATH/images/{}.png  -resize 322x433! $PWD/images/{}.png
+echo "Resizing images of $MSE_PATH."
+
+ls $TMP_PATH/images/*.png | grep -oP '\d+' | xargs -I {} convert $TMP_PATH/images/{}.png -resize 322x433! $PWD/images/picture/card/{}.png
 rm -rf $TMP_PATH
 
 echo "Finished generating $1."

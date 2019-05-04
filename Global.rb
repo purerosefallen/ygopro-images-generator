@@ -25,7 +25,7 @@ module Global
 	self.temp_database_name = "working-cards.cdb"
 	self.image_type = '.jpg'
 	self.records_name = "records.json"
-	self.answer_path = "ygopro-images"
+	self.answer_path = "images"
 	self.answer_uri = "https://github.com/mycard/ygo-images.git"
 	self.mse_path = "magicseteditor"
 	self.sql_fix_name = "fix.sql"
@@ -40,7 +40,7 @@ module Global
 	end
 
 	def full_answer_path
-		name = sprintf(self.answer_path, self.language)
+		name = self.answer_path + "/picture/card"
 		unless Dir.exist? name
 			File.delete name if !(File.directory? name) and File.exist? name
 			Dir.mkdir name

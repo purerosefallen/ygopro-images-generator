@@ -6,6 +6,8 @@ export PROCESS_COUNT=$(grep -c processor /proc/cpuinfo)
 #git fetch origin master
 #git reset --hard FETCH_HEAD
 
+echo "Fetching datas."
+
 cd ../pics
 git fetch origin master
 git reset --hard FETCH_HEAD
@@ -25,8 +27,18 @@ wget -O ./ygopro-database/locales/en-US/cards.cdb https://github.com/shadowfox87
 
 #echo '{}' > ./records.json 
 
+echo "Generating mse files."
 rm -rf ./mse-sets/ 
 ruby --external-encoding=utf-8 generate.rb en-US
 
+echo "Generating images."
 pm2 list
 ls ./mse-sets/ | xargs -I {} -P $PROCESS_COUNT ./mse.sh {}
+
+echo "Pushing to GitHub."
+cd images
+git fetch origin master
+git add .
+git commit -m "Auto generate"
+git push origin master
+cd ..
