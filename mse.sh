@@ -35,4 +35,4 @@ echo "Resizing images of $MSE_PATH."
 ls $TMP_PATH/images/ | sed -e "s/\.png$//" | xargs -I {} convert $TMP_PATH/images/{}.png -resize 322x433! $PWD/images/picture/card/{}.jpg
 rm -rf $TMP_PATH
 
-echo "Finished generating $1."
+echo "Finished generating $MSE_PATH."
