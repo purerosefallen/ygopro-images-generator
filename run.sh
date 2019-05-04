@@ -42,7 +42,6 @@ ls ./mse-sets/ | xargs -I {} -P $PROCESS_COUNT ./mse.sh {}
 
 echo "Pushing to GitHub."
 cd images
-git fetch origin master
 git add .
 git commit -m "Auto generate"
 git push -f origin master
