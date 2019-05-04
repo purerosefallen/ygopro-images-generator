@@ -21,7 +21,7 @@ mkdir -p  $TMP_PATH/images
 
 echo "Generating images of $MSE_PATH."
 
-pm2 start ./MagicSetEditor/mse.com --interpreter wine --name $PROCESS_ID -- --export $MSE_PATH $TMP_PATH/images/{card.gamecode}.png
+wine ./MagicSetEditor/mse.com --export $MSE_PATH $TMP_PATH/images/{card.gamecode}.png
 
 CURRENT_COUNT=0
 while (($CURRENT_COUNT != $GENERATE_COUNT))
@@ -29,7 +29,7 @@ do
     CURRENT_COUNT=$(ls $TMP_PATH/images | wc -l)
 done
 
-pm2 delete $PROCESS_ID
+pkill mse.com
 
 echo "Resizing images of $MSE_PATH."
 
