@@ -11,7 +11,6 @@ echo "Fetching datas."
 cd images
 git fetch origin master
 git reset --hard FETCH_HEAD
-cd ..
 
 cd ../pics
 git fetch origin master
