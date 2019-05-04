@@ -12,9 +12,9 @@ cd images
 git fetch origin master
 git reset --hard FETCH_HEAD
 
-cd ../pics
-git fetch origin master
-git reset --hard FETCH_HEAD
+#cd ../pics
+#git fetch origin master
+#git reset --hard FETCH_HEAD
 cd ..
 
 #cd ./YGOTCGOCGHQPics/
