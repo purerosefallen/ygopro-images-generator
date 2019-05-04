@@ -8,6 +8,11 @@ export PROCESS_COUNT=$(grep -c processor /proc/cpuinfo)
 
 echo "Fetching datas."
 
+cd images
+git fetch origin master
+git reset --hard FETCH_HEAD
+cd ..
+
 cd ../pics
 git fetch origin master
 git reset --hard FETCH_HEAD
@@ -40,5 +45,5 @@ cd images
 git fetch origin master
 git add .
 git commit -m "Auto generate"
-git push origin master
+git push -f origin master
 cd ..
