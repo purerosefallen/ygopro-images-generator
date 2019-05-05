@@ -23,7 +23,7 @@ cd ..
 #git reset --hard FETCH_HEAD
 #cd ..
 
-wget -O ./ygopro-database/locales/en-US/cards.cdb https://github.com/shadowfox87/ygopro2/raw/master/cdb/cards.cdb
+wget -O ./ygopro-database/locales/en-US/cards.cdb https://github.com/szefo09/updateYGOPro2/raw/master/cards.cdb
 
 #rm -rf pics/*
 #cp -rf ./YGOTCGOCGHQPics/*.png ./pics/
