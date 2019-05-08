@@ -13,22 +13,18 @@ cd images
 git fetch origin master
 git reset --hard FETCH_HEAD
 
-#cd ../pics
-#git fetch origin master
-#git reset --hard FETCH_HEAD
 cd ..
 
-#cd ./YGOTCGOCGHQPics/
+#cd ./YGOArtworks/
 #git fetch origin master
 #git reset --hard FETCH_HEAD
 #cd ..
 
-wget -O ./ygopro-database/locales/en-US/cards.cdb https://github.com/szefo09/updateYGOPro2/raw/master/cards.cdb
-
-#rm -rf pics/*
-#cp -rf ./YGOTCGOCGHQPics/*.png ./pics/
-#mogrify -format jpg ./pics/*.png
-#rename 's/png/jpg/g' ./pics/*.png
+#merge cdbs
+sqlite https://github.com/szefo09/updateYGOPro2/raw/master/cards.cdb .dump | sqlite3 ./ygopro-database/locales/en-US/all.cdb
+sqlite3 https://github.com/szefo09/updateYGOPro2/raw/master/official.cdb .dump | sqlite3 ./ygopro-database/locales/en-US/all.cdb
+sqlite3 https://github.com/szefo09/updateYGOPro2/raw/master/prerelease.cdb .dump | sqlite3 ./ygopro-database/locales/en-US/all.cdb
+wget -O ./ygopro-database/locales/en-US/all.cdb
 
 #echo '{}' > ./records.json 
 
