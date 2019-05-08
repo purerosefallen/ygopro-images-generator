@@ -20,11 +20,16 @@ cd ..
 #git reset --hard FETCH_HEAD
 #cd ..
 
+#Get cdbs
+wget -O ./ygopro-database/locales/en-US/tmp/ https://github.com/szefo09/updateYGOPro2/raw/master/cards.cdb
+wget -O ./ygopro-database/locales/en-US/tmp/ https://github.com/szefo09/updateYGOPro2/raw/master/official.cdb
+wget -O ./ygopro-database/locales/en-US/tmp/ https://github.com/szefo09/updateYGOPro2/raw/master/prerelease.cdb
+
 #merge cdbs
-sqlite https://github.com/szefo09/updateYGOPro2/raw/master/cards.cdb .dump | sqlite3 ./ygopro-database/locales/en-US/all.cdb
-sqlite3 https://github.com/szefo09/updateYGOPro2/raw/master/official.cdb .dump | sqlite3 ./ygopro-database/locales/en-US/all.cdb
-sqlite3 https://github.com/szefo09/updateYGOPro2/raw/master/prerelease.cdb .dump | sqlite3 ./ygopro-database/locales/en-US/all.cdb
-wget -O ./ygopro-database/locales/en-US/all.cdb
+sqlite ./ygopro-database/locales/en-US/tmp/cards.cdb .dump | sqlite3 ./ygopro-database/locales/en-US/cards.cdb
+sqlite ./ygopro-database/locales/en-US/tmp/official.cdb .dump | sqlite3 ./ygopro-database/locales/en-US/cards.cdb
+sqlite ./ygopro-database/locales/en-US/tmp/prerelease.cdb .dump | sqlite3 ./ygopro-database/locales/en-US/cards.cdb
+
 
 #echo '{}' > ./records.json 
 
