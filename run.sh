@@ -21,14 +21,19 @@ cd ..
 #cd ..
 
 #Get cdbs
-wget -O ./ygopro-database/locales/en-US/tmp/ https://github.com/szefo09/updateYGOPro2/raw/master/cards.cdb
-wget -O ./ygopro-database/locales/en-US/tmp/ https://github.com/szefo09/updateYGOPro2/raw/master/official.cdb
-wget -O ./ygopro-database/locales/en-US/tmp/ https://github.com/szefo09/updateYGOPro2/raw/master/prerelease.cdb
+export TMP_PATH=/tmp/ygopro-images-generator-$RANDOM
+rm -rf $TMP_PATH
+mkdir -p $TMP_PATH
+
+wget -O $TMP_PATH/cards.cdb https://github.com/szefo09/updateYGOPro2/raw/master/cards.cdb
+wget -O $TMP_PATH/official.cdb https://github.com/szefo09/updateYGOPro2/raw/master/official.cdb
+wget -O $TMP_PATH/prerelease.cdb https://github.com/szefo09/updateYGOPro2/raw/master/prerelease.cdb
 
 #merge cdbs
-sqlite ./ygopro-database/locales/en-US/tmp/cards.cdb .dump | sqlite3 ./ygopro-database/locales/en-US/cards.cdb
-sqlite ./ygopro-database/locales/en-US/tmp/official.cdb .dump | sqlite3 ./ygopro-database/locales/en-US/cards.cdb
-sqlite ./ygopro-database/locales/en-US/tmp/prerelease.cdb .dump | sqlite3 ./ygopro-database/locales/en-US/cards.cdb
+rm -rf ./ygopro-database/locales/en-US/cards.cdb
+sqlite3 $TMP_PATH/cards.cdb .dump | sqlite3 ./ygopro-database/locales/en-US/cards.cdb
+sqlite3 $TMP_PATH/official.cdb .dump | sqlite3 ./ygopro-database/locales/en-US/cards.cdb
+sqlite3 $TMP_PATH/prerelease.cdb .dump | sqlite3 ./ygopro-database/locales/en-US/cards.cdb
 
 
 #echo '{}' > ./records.json 
