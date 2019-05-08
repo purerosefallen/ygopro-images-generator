@@ -43,7 +43,7 @@ rm -rf ./mse-sets/
 ruby --external-encoding=utf-8 generate.rb en-US
 
 echo "Generating images."
-pm2 list
+#pm2 list
 ls ./mse-sets/ | xargs -I {} ./mse.sh {}
 
 echo "Pushing to GitHub."
