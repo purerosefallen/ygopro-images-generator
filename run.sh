@@ -13,22 +13,28 @@ cd images
 git fetch origin master
 git reset --hard FETCH_HEAD
 
-#cd ../pics
-#git fetch origin master
-#git reset --hard FETCH_HEAD
 cd ..
 
-#cd ./YGOTCGOCGHQPics/
+#cd ./YGOArtworks/
 #git fetch origin master
 #git reset --hard FETCH_HEAD
 #cd ..
 
-wget -O ./ygopro-database/locales/en-US/cards.cdb https://github.com/szefo09/updateYGOPro2/raw/master/cards.cdb
+#Get cdbs
+export TMP_PATH=/tmp/ygopro-images-generator-$RANDOM
+rm -rf $TMP_PATH
+mkdir -p $TMP_PATH
 
-#rm -rf pics/*
-#cp -rf ./YGOTCGOCGHQPics/*.png ./pics/
-#mogrify -format jpg ./pics/*.png
-#rename 's/png/jpg/g' ./pics/*.png
+wget -O $TMP_PATH/cards.cdb https://github.com/szefo09/updateYGOPro2/raw/master/cards.cdb
+wget -O $TMP_PATH/official.cdb https://github.com/szefo09/updateYGOPro2/raw/master/official.cdb
+wget -O $TMP_PATH/prerelease.cdb https://github.com/szefo09/updateYGOPro2/raw/master/prerelease.cdb
+
+#merge cdbs
+rm -rf ./ygopro-database/locales/en-US/cards.cdb
+sqlite3 $TMP_PATH/cards.cdb .dump | sqlite3 ./ygopro-database/locales/en-US/cards.cdb
+sqlite3 $TMP_PATH/official.cdb .dump | sqlite3 ./ygopro-database/locales/en-US/cards.cdb
+sqlite3 $TMP_PATH/prerelease.cdb .dump | sqlite3 ./ygopro-database/locales/en-US/cards.cdb
+
 
 #echo '{}' > ./records.json 
 
