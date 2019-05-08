@@ -35,6 +35,7 @@ sqlite3 $TMP_PATH/cards.cdb .dump | sqlite3 ./ygopro-database/locales/en-US/card
 sqlite3 $TMP_PATH/official.cdb .dump | sqlite3 ./ygopro-database/locales/en-US/cards.cdb
 sqlite3 $TMP_PATH/prerelease.cdb .dump | sqlite3 ./ygopro-database/locales/en-US/cards.cdb
 
+rm -rf $TMP_PATH
 
 #echo '{}' > ./records.json 
 
