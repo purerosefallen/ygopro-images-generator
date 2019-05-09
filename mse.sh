@@ -21,7 +21,7 @@ mkdir -p  $TMP_PATH/images
 
 echo "Generating images of $MSE_PATH."
 
-wine ./MagicSetEditor/mse.com --export $MSE_PATH $TMP_PATH/images/{card.gamecode}.png
+wine ./MagicSetEditor/mse.com --export $MSE_PATH $TMP_PATH/images/{card.gamecode}.png &
 
 CURRENT_COUNT=0
 while (($CURRENT_COUNT != $GENERATE_COUNT))
