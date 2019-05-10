@@ -33,7 +33,7 @@ pkill mse.com
 
 echo "Resizing images of $MSE_PATH."
 
-ls $TMP_PATH/images/ | sed -e "s/\.png$//" | xargs -I {} -P $PROCESS_COUNT convert $TMP_PATH/images/{}.png -resize 322x433! -quality 90 $PWD/images/picture/card/{}.jpg
+ls $TMP_PATH/images/ | sed -e "s/\.png$//" | xargs -I {} -P $PROCESS_COUNT convert $TMP_PATH/images/{}.png -resize 322x433! -sampling-factor 1:1:1 -define jpeg:dct-method=float -quality 85 $PWD/images/picture/card/{}.jpg
 rm -rf $TMP_PATH
 
 echo "Finished generating $MSE_PATH."
