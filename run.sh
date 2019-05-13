@@ -3,13 +3,17 @@
 #export PROCESS_COUNT=$(grep -c processor /proc/cpuinfo)
 #export PROCESS_COUNT=$1
 
-#cd ygopro-database
+echo "Fetching datas."
+
+cd ./images
+git fetch origin master
+git reset --hard FETCH_HEAD
+
+#cd ../ygopro-database
 #git fetch origin master
 #git reset --hard FETCH_HEAD
 
-echo "Fetching datas."
-
-cd images
+cd ../updateYGOPro2/
 git fetch origin master
 git reset --hard FETCH_HEAD
 
@@ -20,22 +24,11 @@ cd ..
 #git reset --hard FETCH_HEAD
 #cd ..
 
-#Get cdbs
-export TMP_PATH=/tmp/ygopro-images-generator-$RANDOM
-rm -rf $TMP_PATH
-mkdir -p $TMP_PATH
-
-wget -O $TMP_PATH/cards.cdb https://github.com/szefo09/updateYGOPro2/raw/master/cards.cdb
-wget -O $TMP_PATH/official.cdb https://github.com/szefo09/updateYGOPro2/raw/master/official.cdb
-wget -O $TMP_PATH/prerelease.cdb https://github.com/szefo09/updateYGOPro2/raw/master/prerelease.cdb
 
 #merge cdbs
+echo "Generating database."
 rm -rf ./ygopro-database/locales/en-US/cards.cdb
-sqlite3 $TMP_PATH/cards.cdb .dump | sqlite3 ./ygopro-database/locales/en-US/cards.cdb
-sqlite3 $TMP_PATH/official.cdb .dump | sqlite3 ./ygopro-database/locales/en-US/cards.cdb
-sqlite3 $TMP_PATH/prerelease.cdb .dump | sqlite3 ./ygopro-database/locales/en-US/cards.cdb
-
-rm -rf $TMP_PATH
+ls ./updateYGOPro2/*.cdb | sqlite3 {} .dump | sqlite3 ./ygopro-database/locales/en-US/cards.cdb
 
 #echo '{}' > ./records.json 
 
