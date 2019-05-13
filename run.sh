@@ -28,7 +28,7 @@ cd ..
 #merge cdbs
 echo "Generating database."
 rm -rf ./ygopro-database/locales/en-US/cards.cdb
-ls ./updateYGOPro2/*.cdb | sqlite3 {} .dump | sqlite3 ./ygopro-database/locales/en-US/cards.cdb
+ls ./updateYGOPro2/*.cdb | xargs -I {} sqlite3 {} .dump | xargs -I {} sqlite3 ./ygopro-database/locales/en-US/cards.cdb
 
 #echo '{}' > ./records.json 
 
