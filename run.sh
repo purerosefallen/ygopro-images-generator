@@ -30,7 +30,7 @@ echo "Generating database."
 rm -rf ./ygopro-database/locales/en-US/cards.cdb
 ls ./updateYGOPro2/*.cdb | xargs -I {} sqlite3 {} .dump | sqlite3 ./ygopro-database/locales/en-US/cards.cdb
  
-#echo '{}' > ./records.json 
+echo '{}' > ./records.json 
 
 echo "Generating mse files."
 rm -rf ./mse-sets/ 
