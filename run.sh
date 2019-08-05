@@ -13,7 +13,7 @@ git reset --hard FETCH_HEAD
 #git fetch origin master
 #git reset --hard FETCH_HEAD
 
-cd ../updateYGOPro2/
+cd ../cdb/
 git fetch origin master
 git reset --hard FETCH_HEAD
 
@@ -28,7 +28,7 @@ cd ..
 #merge cdbs
 echo "Generating database."
 rm -rf ./ygopro-database/locales/en-US/cards.cdb
-ls ./updateYGOPro2/*.cdb | xargs -I {} sqlite3 {} .dump | sqlite3 ./ygopro-database/locales/en-US/cards.cdb
+ls ./cdb/*.cdb | xargs -I {} sqlite3 {} .dump | sqlite3 ./ygopro-database/locales/en-US/cards.cdb
  
 #echo '{}' > ./records.json 
 
